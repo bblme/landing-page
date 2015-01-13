@@ -69,8 +69,9 @@
       if(!emailOne){
         return;
       }
-      $.post( "http://66.228.48.114:8090/api/users", { email: emailOne }, function() {
-                alert('success')
+      $.post( "http://66.228.48.114:8080/api/emails", { email: emailOne }, function() {
+                console.log('success');
+		$('#subscribe-form-email').val('');
             })
               .fail(function() {
                 alert( "please contact felipe.cavalcanti.rj@gmail.com " );

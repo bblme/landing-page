@@ -80,7 +80,6 @@
                 alert( "please contact felipe.cavalcanti.rj@gmail.com " );
               });
     }
-
   </script>
 
 	</head>
@@ -143,7 +142,7 @@
 									<input type="email" name="email" id="subscribe-form-email" class="subscribe-form-email form-control form-control-lg" placeholder="Enter your email address" autocomplete="off">
 									<button class="subscribe-form-submit btn btn-primary btn-lg" data-loading-text="Loading..." type="button" onclick="formSubmit();">Notify Me</button>
 								</div>
-                                <button class="btn btn-primary btn-lg btn-block btn-feedback" data-loading-text="Loading..." onclick="return false;"><span class="glyphicon glyphicon-ok"></span> Thanks! We'll have exciting news soon!</button>
+                                <button class="btn btn-primary btn-lg btn-block btn-feedback" data-loading-text="Loading..." id="feedbackButton" name="feedbackButton" type="button"><span class="glyphicon glyphicon-ok"></span> Thanks! We'll have exciting news soon!</button>
 							</form>
 
 							<!-- HERO DESCRIPTION -->
@@ -214,6 +213,16 @@
 			autoplay: true,
 			autoplaySpeed: 2500,
 		});
+
+		$(function()
+		{
+			$("feedbackButton").click(function(event)
+			  {
+			    event.preventDefault();
+			  });
+		});
+
+
         </script>
 
     </body>

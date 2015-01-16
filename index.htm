@@ -71,14 +71,16 @@
       }
       $.post( "http://66.228.48.114:8080/api/emails", { email: emailOne }, function() {
                 console.log('success');
-		$('#subscribe-form-email').val('');
-		$('.subscribe-form-input').hide();
-		$('.btn-feedback').show();
+				$('#subscribe-form-email').val('');
+				$('.subscribe-form-input').hide();
+				$('.btn-feedback').show();
+				computeConversion();
             })
               .fail(function() {
                 alert( "please contact felipe.cavalcanti.rj@gmail.com " );
               });
     }
+
   </script>
 
 	</head>
@@ -135,13 +137,13 @@
 							<p class="hero-description">Gonna meet a friend and don't know where? Send a bubble and see each other location on a map. You don't have to be stuck in a meeting spot anymore - your exact location is shared live within a bubble.</p>
 
 							<!-- SUBSCRIBE FORM -->
-							<form action="#" method="post" id="subscribe-form" class="subscribe-form wow fadeIn" data-wow-duration="1s" role="form">
+							<form id="subscribe-form" class="subscribe-form wow fadeIn" data-wow-duration="1s" role="form">
 								<div class="form-validation alert"><!-- Validation Message here --></div>
 								<div class="form-group subscribe-form-input">
 									<input type="email" name="email" id="subscribe-form-email" class="subscribe-form-email form-control form-control-lg" placeholder="Enter your email address" autocomplete="off">
 									<button class="subscribe-form-submit btn btn-primary btn-lg" data-loading-text="Loading..." type="button" onclick="formSubmit();">Notify Me</button>
 								</div>
-                                <button class="btn btn-primary btn-lg btn-block btn-feedback" data-loading-text="Loading..."><span class="glyphicon glyphicon-ok"></span> Thanks! We'll have exciting news soon!</button>
+                                <button class="btn btn-primary btn-lg btn-block btn-feedback" data-loading-text="Loading..." onclick="return false;"><span class="glyphicon glyphicon-ok"></span> Thanks! We'll have exciting news soon!</button>
 							</form>
 
 							<!-- HERO DESCRIPTION -->
@@ -183,13 +185,22 @@
 
         <!-- GOOGLE ANALYTICS -->
         <script>
-		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-56242267-1']);
+      	_gaq.push(['_trackPageview']);
+
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
 		  ga('create', 'UA-56475936-1', 'auto');
+		  ga('require', 'displayfeatures');
 		  ga('send', 'pageview');
+
+		      function computeConversion(){
+		        _gaq.push(['_trackEvent', '', '', '/subscribe']);
+		      }
 
 		$('.app-interface').slick({
 			infinite: true,

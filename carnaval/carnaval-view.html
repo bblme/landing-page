@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <style type="text/css">
+      html, body, #map-canvas { height: 100%; margin: 0; padding: 0;}
+    </style>
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApOsN0j6EWIr9Mfn8esjZ8OIyj5tyhRDY">
+    </script>
+    <script type="text/javascript">
+      function initialize() {
+        var mapOptions = { 
+          center: getLatLng('Rio de Janeiro'),
+        //  center: { lat: -34.397, lng: 150.644},
+          zoom: 8
+        };
+        var map = new google.maps.Map(document.getElementById('map-canvas'),
+            mapOptions);
+        }
+        function getLatLng(address){
+          $.post('http://maps.googleapis.com/maps/api/geocode/output?addres='+address, function( data ) {
+            console.log(data);
+            return data;
+          });
+        }
+
+
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+  </head>
+  <body>
+<div id="map-canvas"></div>
+
+
+
+
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script>
+// $('#container').load('content/blocos-2015.html'); // SERIOUSLY!
+ 
+// $.ajax({
+//     url: 'content/blocos-2015.html',
+//     type: 'GET',
+//     success: function(res) {
+//         var headline = $(res.responseText).find('td:nth-child(1)').text();
+//         console(headline);
+//     }
+// });
+
+
+$(document).ready(function(){
+  var container = $('#container');
+  container.attr('tabIndex','-1');
+  $('.ajaxtrigger').click(function(){
+    var trigger = $(this);
+    var url = 'content/blocos-2015.html';
+    if(!trigger.hasClass('loaded')){
+      trigger.append('<span></span>');
+      trigger.addClass('loaded');
+      var msg = trigger.find('span').last();
+    } else {
+      var msg = trigger.find('span').last();
+    }
+    doAjax(url,msg,container);
+    return false;
+  });
+  
+  function doAjax(url){
+    // if the URL starts with http
+    if(url.match('^http')){
+      // assemble the YQL call
+      $.getJSON("http://query.yahooapis.com/v1/public/yql?"+
+                "q=select%20*%20from%20html%20where%20url%3D%22"+
+                encodeURIComponent(url)+
+                "%22&format=xml'&callback=?",
+        function(data){
+          if(data.results[0]){
+            var data = filterData(data.results[0]);
+          } else {
+            console.log('Error')
+          }
+        }
+      );
+    } else {
+      $.ajax({
+        url: url,
+        timeout:5000,
+        success: function(data){
+          db = filterData(data);
+          //msg.html(' (ready.)');
+          // container.
+          //   html(filterData(data)).
+          //     focus().
+          //       effect("highlight",{},1000);
+        },
+        error: function(req,error){
+          //msg.html(' (error!)');
+          //msg.addClass('error');
+          if(error === 'error'){error = req.statusText;}
+          var errormsg = 'There was a communication error: '+error;
+            // container.
+            //   html(errormsg).
+            //     focus().
+            //       effect('highlight',{color:'#c00'},1000);
+        },
+        beforeSend: function(data){
+          //msg.removeClass('error');
+          //msg.html(' (loading...)');
+        }
+      });
+    }
+  }
+  function filterData(data){
+    // filter all the nasties out
+    // no body tags
+    data = data.replace(/<?\/body[^>]*>/g,'');
+    // no linebreaks
+    data = data.replace(/[\r|\n]+/g,'');
+    // no comments
+    data = data.replace(/<--[\S\s]*?-->/g,'');
+    // no noscript blocks
+    data = data.replace(/<noscript[^>]*>[\S\s]*?<\/noscript>/g,'');
+    // no script blocks
+    data = data.replace(/<script[^>]*>[\S\s]*?<\/script>/g,'');
+    // no self closing scripts
+    data = data.replace(/<script.*\/>/,'');
+
+    // No images tags
+    // to do ***
+
+    // Get Blocos titles
+    data = $(data);
+    db = [{date: 'Data', title: 'Bloco', place: 'Onde'}]
+    data.find('.sortable tbody tr').each(function(){
+      if($(this).find('td:nth-child(1)').text()!=''){
+        db.push({ date: $(this).find('td:nth-child(1)').text(), title: $(this).find('td:nth-child(2)').text(), place: $(this).find('td:nth-child(3)').text()});
+      }
+    });
+
+    //var table = $('<div class="date"></div>');
+    $.each(db, function(i,item){
+      console.log(item.date+' | vai rolar '+item.title+''+' | Onde? '+item.place+'<br/>');
+    })
+
+    return db;
+  }
+  db = null;
+
+  var url = 'content/blocos-2015.html'; //'http://www.wikirio.com.br/Blocos_do_Carnaval_2015_na_cidade_do_Rio_de_Janeiro';
+
+  doAjax(url);
+
+  function setMarkers(filter){
+    var dbFiltered = db;
+    if(filter){
+
+    }
+
+    for(e in dbFiltered){
+      var address = e.place;
+      var title = e.title+' ('+e.date+')';
+      console.log(getLatLng(address));
+      // var marker = new google.maps.Marker({
+      //     position: getLatLng(address),
+      //     map: map,
+      //     title: title
+      // });
+    }
+  }
+
+
+});
+
+</script>
+
+<button class="ajaxtrigger">Load content</button>
+
+<div id="container"></div>
+
+</body>
+</html>

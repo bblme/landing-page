@@ -198,7 +198,8 @@
 		  ga('send', 'pageview');
 
 		      function computeConversion(){
-		        _gaq.push(['_trackEvent', '', '', '/subscribe']);
+		      	console.log('computeConversion');
+		        _gaq.push(['_trackEvent', 'email', 'signup', 'true']);
 		      }
 
 		$('.app-interface').slick({

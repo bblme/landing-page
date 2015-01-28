@@ -104,22 +104,9 @@
 
 						<!-- HERO IMAGES -->
 						<div class="hero-images">
-                            <div class="app-interface">
-                                <img src="img/app-interface-v3-13.jpg" class="hero-image app-screen">
-                                <img src="img/app-interface-v3-14.jpg" class="hero-image app-screen">
-                                <!--<img src="img/app-interface-v3-15.jpg" class="hero-image app-screen">-->
-                                <img src="img/app-interface-v3-16.jpg" class="hero-image app-screen">
-                               <!-- <img src="img/app-interface-v3-17.jpg" class="hero-image app-screen">-->
-                                <img src="img/app-interface-v3-18.jpg" class="hero-image app-screen">
-                                <!--<img src="img/app-interface-v3-19.jpg" class="hero-image app-screen">-->
-                                <img src="img/app-interface-v3-20.jpg" class="hero-image app-screen">
-                                <!--<img src="img/app-interface-v3-21.jpg" class="hero-image app-screen">-->
-                                <img src="img/app-interface-v3-22.jpg" class="hero-image app-screen">
-                            </div>
 
-
-							<img src="img/hero-phone-back.png" class="hero-image phone-image-double phone-image-left wow fadeInLeft" alt="" data-wow-duration="1s" data-wow-delay="0.5s">
-							<img src="img/hero-phone-front.png" class="hero-image phone-image-double phone-image-right phone-image-front wow fadeInLeft" alt="" data-wow-duration="1s" data-wow-delay="0s">
+							<img src="img/lp-walkthrough.png" class="hero-image phone-image-double wow fadeInLeft" alt="" data-wow-duration="1s" data-wow-delay="0.5s">
+							
                             
 						</div>
 
@@ -133,14 +120,14 @@
 							<h1 class="hero-title">The easiest way to <br/>share your location</h1>
 
 							<!-- HERO DESCRIPTION -->
-							<p class="hero-description">Gonna meet a friend and don't know where? Send a bubble and see each other location on a map. You don't have to be stuck in a meeting spot anymore - your exact location is shared live within a bubble.</p>
+							<p class="hero-description">Encontre seus amig@s de forma fácil! O Bubbl é um app para compartilhar e acompanhar a localização de amigos próximos. <br/>É grátis e simples de usar!</p>
 
 							<!-- SUBSCRIBE FORM -->
 							<form id="subscribe-form" class="subscribe-form wow fadeIn" data-wow-duration="1s" role="form">
 								<div class="form-validation alert"><!-- Validation Message here --></div>
 								<div class="form-group subscribe-form-input">
-									<input type="email" name="email" id="subscribe-form-email" class="subscribe-form-email form-control form-control-lg" placeholder="Enter your email address" autocomplete="off">
-									<button class="subscribe-form-submit btn btn-primary btn-lg" data-loading-text="Loading..." type="button" onclick="formSubmit();">Notify Me</button>
+									<input type="email" name="email" id="subscribe-form-email" class="subscribe-form-email form-control form-control-lg" placeholder="Seu e-mail" autocomplete="off">
+									<button class="subscribe-form-submit btn btn-primary btn-lg" data-loading-text="Loading..." type="button" onclick="formSubmit();">Me avisa!</button>
 								</div>
                                 <button class="btn btn-primary btn-lg btn-block btn-feedback" data-loading-text="Loading..." id="feedbackButton" name="feedbackButton" type="button"><span class="glyphicon glyphicon-ok"></span> Thanks! We'll have exciting news soon!</button>
 							</form>
@@ -202,18 +189,18 @@
 		        _gaq.push(['_trackEvent', 'email', 'signup', 'true']);
 		      }
 
-		$('.app-interface').slick({
-			infinite: true,
-			speed: 1500,
-			fade: true,
-			slide: '.app-screen',
-			arrows: false,
-			cssEase: 'linear',
-			slidesToShow: 1,
-			slidesToScroll: 1,
-			autoplay: true,
-			autoplaySpeed: 2500,
-		});
+		// $('.app-interface').slick({
+		// 	infinite: true,
+		// 	speed: 1500,
+		// 	fade: true,
+		// 	slide: '.app-screen',
+		// 	arrows: false,
+		// 	cssEase: 'linear',
+		// 	slidesToShow: 1,
+		// 	slidesToScroll: 1,
+		// 	autoplay: true,
+		// 	autoplaySpeed: 2500,
+		// });
 
 		$(function()
 		{
@@ -221,6 +208,8 @@
 			  {
 			    event.preventDefault();
 			  });
+
+			$('.hero-image').attr('src','img/lp-walkthrough.gif');
 		});
 
 

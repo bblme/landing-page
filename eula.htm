@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="UTF-8">
+
+		<!-- METADATA -->
+		<meta name="description" content="Encontre seus amig@s de forma fácil! O Bubbl é um app para compartilhar e acompanhar a localização de amigos próximos.">
+		<meta name="keywords" content="bubbl, geolocation, map, location app, meet, date">
+		<meta name="author" content="Felipe Cavalcanti, Felipe Velloso">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+		<!-- PAGE TITLE -->
+		<title>Bubbl | The easiest way to share your location</title>
+
+		<!-- FAVICON -->
+		<link rel="icon" href="img/favicon.png">
+		<link rel="apple-touch-icon" href="">
+		<link rel="apple-touch-icon" sizes="72x72" href="">
+		<link rel="apple-touch-icon" sizes="114x114" href="">
+
+		<!--
+		=================================
+		STYLESHEETS
+		=================================
+		-->
+
+		<!-- BOOTSTRAP -->
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+
+		<!-- WEB FONTS -->
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,700,800,400,600' rel='stylesheet' type='text/css'>
+
+		<!-- ICON FONTS -->
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/simple-line-icons.min.css">
+
+		<!-- OTHER STYLES -->
+		<link rel="stylesheet" href="css/animate.min.css">
+
+		<!-- MAIN STYLES -->
+		<link rel="stylesheet" href="css/style.css">
+
+		<!-- COLORS -->
+		<link id="color-css" rel="stylesheet" href="css/green.css" />
+        
+		<!-- LANDING PAGE STYLE -->
+		<link id="color-css" rel="stylesheet" href="css/eula.css" />
+
+		<!-- JQUERY -->
+		<script async="" src="js/analytics.js"></script>
+		<script src="js/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript">
+    function disableKeyPress(e)
+    {
+         var key;      
+         if(window.event)
+              key = window.event.keyCode; //IE
+         else
+              key = e.which; //firefox      
+
+         if(key == 13)
+            formSubmit();
+
+         return (key != 13);
+    }
+    function formSubmit(){
+      var emailOne = $('#subscribe-form-email').val();
+      if(!emailOne){
+        return;
+      }
+      $.post( "http://66.228.48.114:8080/api/emails", { email: emailOne }, function() {
+                console.log('success');
+				$('#subscribe-form-email').val('');
+				$('.subscribe-form-input').hide();
+				$('.btn-feedback').show();
+				computeConversion();
+            })
+              .fail(function() {
+                alert( "please contact felipe.cavalcanti.rj@gmail.com " );
+              });
+    }
+  </script>
+
+	</head>
+
+	<body OnKeyPress="return disableKeyPress(event)">
+
+		<div id="document" class="document">
+
+			<!--
+			=================================
+			HERO SECTION
+			=================================
+			-->
+			<section id="home" class="hero-layout-1 section">
+
+				<div class="jumbotron header">
+					<div class="container">
+						<!-- LOGO -->
+						<img src="img/hero-logo-white.png" alt="Bubbl" class="hero-logo">
+					</div>
+				</div>
+
+				<div class="container">
+
+					<div class="doc-page">
+
+						<h3>
+							Termos de Uso 
+						</h3>
+
+						<hr/>
+
+						<p>
+							Este Termo de Uso apresenta as "Condições Gerais" aplicáveis ao uso dos serviços oferecidos pelo "Bubbl". Qualquer pessoa, doravante nominada "Usuário", que pretenda utilizar os serviços do "Bubbl" deverá aceitar este Termo de Uso, e todas as demais políticas e princípios que o regem. A ACEITAÇÃO DO TERMO DE USO É ABSOLUTAMENTE INDISPENSÁVEL À UTILIZAÇÃO DO APLICATIVO E SEUS SERVIÇOS. O "Usuário" deverá ler, certificar-se de haver entendido e aceitar todas as condições estabelecidas no Termo de Uso, assim como nos demais documentos incorporados aos mesmos por referência, antes de seu cadastro como Usuário do "Bubbl".
+						</p>
+
+						<h4>
+							CLÁUSULA PRIMEIRA: DO SERVIÇO
+						</h4>
+						<ol>
+							<li>
+								Os serviços oferecidos pelo "Bubbl" em seu aplicativo móvel, doravante denominado simplesmente "Aplicativo", serão os relacionados abaixo e outros que venham a ser criados e oferecidos: 
+								<blockquote>Utilização de ferramenta de busca específica com foco em prover informações acerca da localização física geográfica do usuário no globo bem como a de pessoas previamente autorizadas pelo mesmo;
+								</blockquote>
+							</li>
+							<li>
+								O "Bubbl" reserva-se o direito de modificar, os serviços oferecidos podendo modificá-losa qualquer tempo e circunstância, , excluí-los ou incluir novos sem qualquer aviso prévio ao Usuário.
+							</li>
+							<li>
+								O "Bubbl" poderá cancelar ou excluir qualquer Usuário que desrespeite os termos deste documento e/ou esteja em desacordo com a legislação brasileira vigente, independente de prévia notificação ou comunicação, seja por verificação do "Bubbl" e/ou por notificação, intimação, ordem de qualquer autoridade pública ou qualquer denúncia de terceiros.
+							</li>
+						</ol>
+
+						<h4>
+							CLÁUSULA SEGUNDA: DA FORMA DE CADASTRO DO USUÁRIO
+						</h4>
+
+						<ol>
+							<li>
+								Os serviços do "Bubbl" estão disponíveis apenas para as pessoas que tenham capacidade legal para contratá-los. Não podem utilizá-los, assim, pessoas que não gozem dessa capacidade, inclusive menores de idade, ou pessoas que tenham sido inabilitadas do "Bubbl" temporária ou definitivamente.
+							</li>
+							<li>
+								Não é permitido que uma mesma pessoa tenha mais de um cadastro. Se o "Bubbl" detectar cadastros duplicados, através do sistema de verificação de dados, irá inabilitar definitivamente todos os cadastros.
+							</li>
+							<li>
+								Pessoas Jurídicas poderão cadastrar-se mediante seu representante legal.
+							</li>
+							<li>
+								Ao cadastrar-se no Aplicativo, o Usuário se compromete a fornecer apenas informações fidedignas, atualizadas e completas, declarando-se plenamente ciente de que a utilização indevida de dados de terceiros ou o fornecimento de informações falsas poderá caracterizar a prática de crime, sujeitando o infrator às penalidades previstas em lei.
+							</li>
+							<li>
+								O "Bubbl" não tem qualquer ingerência na conexão à internet utilizada pelo Usuário, cabendo a este contratar com provedores/servidores de sua escolha.
+							</li>
+							<li>
+								O Usuário autoriza o "Bubbl" a: (i) divulgar as informações acerca da localização físico-geográfica àqueles autorizados por si e previamente cadastrados no aplicativo.
+							</li>
+						</ol>
+
+						<h4>
+							CLÁUSULA TERCEIRA: DAS CONDIÇÕES GERAIS DO SERVIÇO
+						</h4>
+
+						<ol>
+							<li>
+								O "Bubbl" manterá os serviços à disposição do Usuário nos períodos que julgar necessário. Na ocorrência de problemas técnicos ou de responsabilidade de terceiros, tais como, mas não limitados a estes, de empresa fornecedora de energia elétrica ou de empresa prestadora de serviços de comunicação e ou de telecomunicações, ou ainda, na ocorrência de caso fortuito ou força maior, o serviço será interrompido, durante o período necessário, até que a situação seja regularizada com a solução dos problemas.
+							</li>
+							<li>
+								O "Bubbl" manterá suporte técnico, o qual será prestado exclusivamente através do e-mail suport@bubbl.mobi, salvo interrupções necessárias por ocasião de serviços de manutenção no sistema, falhas decorrentes de ações e omissões de terceiros tais como das empresas fornecedoras de energia elétrica e/ou das empresas prestadoras de serviços de telecomunicações e/ou de comunicações envolvidas direta ou indiretamente na prestação do serviço objeto do presente TERMO, casos fortuitos e de força maior.
+							</li>
+							<li>
+								Os serviços de suporte técnico disponibilizados pelo "Bubbl" terão o objetivo exclusivo de auxiliar o Usuário na solução de problemas relacionados à utilização dos recursos contidos, exclusivamente, no Aplicativo.
+							</li>
+							<li>
+								O "Bubbl" não se responsabiliza por qualquer problema decorrentes das informações fornecidas pelo Aplicativo, ressaltando ser de responsabilidade EXCLUSIVA do Usuário autorizar a prestação da informação acerca da sua localização físico-geográfica à terceiros cadastrados no Aplicativo.
+							</li>
+							<li>
+								Caso a conduta do Usuário no seu contato com outras pessoas ou os atendentes do suporte técnico, seja ameaçador, obsceno, difamatório, pejorativo, prejudicial, preconceituoso ou injurioso, discriminatório em relação à raça, cor, religião, credo, sexualidade, opção sexual ou nacionalidade, terá cancelada imediatamente sua relação com o "Bubbl", sem prejuízo de todas as demais medidas legais cabíveis.
+							</li>
+							<li>
+								A responsabilidade do "Bubbl" quanto ao suporte técnico limita-se aos seus melhores esforços empreendidos com vistas ao seu atendimento satisfatório referentes ao objeto deste termo, não garantindo qualquer sucesso na resolução dos problemas encaminhados.
+							</li>
+							<li>
+								A apresentação visual do Aplicativo, seu Layout, podem ser alterados sem aviso prévio, sempre objetivando garantir ao Usuário a melhor utilização do mesmo.
+							</li>
+							<li>
+								O "Bubbl" exime-se, ainda, de qualquer responsabilidade pela utilização do serviço com finalidade diversa da apresentada neste Termo.
+							</li>
+						</ol>
+
+						<h4>
+							CLÁUSULA QUARTA: DA RESPONSABILIDADE DO USUÁRIO
+						</h4>
+
+						<ol>
+							<li>
+								O Usuário será exclusivamente responsável pelos dados e informações prestadas ao fazer seu cadastro no Aplicativo, bem como por qualquer manifestação ou opinião por ele elaborada quando do uso do Aplicativo ou das comunidades a serem criadas.
+							</li>
+							<li>
+								Toda e qualquer manifestação do Usuário poderá gerar efeitos a terceiros, e o Usuário será o único responsável por ela, inclusive e principalmente aquelas que sejam passíveis de medidas administrativas e legais originadas por particulares ou por órgãos governamentais, entidades do governo e das três esferas de governo.
+							</li>
+							<li>
+								O Usuário concorda e compreende que será responsável por criar e manter a confidencialidade das senhas cadastradas a qualquer conta que utilize para acessar os Serviços. Dessa forma, o Usuário concorda que será o único responsável perante o Aplicativo por todas as atividades que ocorram na respectiva conta.
+							</li>
+							<li>
+								Se tomar conhecimento de qualquer utilização não autorizada da sua senha ou da sua conta, o usuário concorda em notificar imediatamente a equipe do "Bubbl" através do e-mail report@bubbl.mobi.
+							</li>
+							<li>
+								Fica vedado ao Usuário ou pessoa a ele ligada qualquer acesso ou utilização do "Bubbl" para obtenção de lucro ou atividade que traga benefícios financeiros, diretos ou indiretos.
+							</li>
+							<li>
+								O Usuário irá zelar e fazer zelar pelas boas práticas, comprometendo-se a respeitar e fazer respeitar os termos descritos neste documento, agindo sempre norteado pelos princípios da boa-fé e lealdade, tanto para com outros usuários, bem como para com o "Bubbl".
+							</li>
+						</ol>
+
+						<h4>
+							CLÁUSULA QUINTA: RESPONSABILIDADE DO "BUBBL"
+						</h4>
+
+						<ol>
+							<li>
+								Os Usuários eximem o "Bubbl" de qualquer responsabilidade pela utilização do serviço de forma diversa pela qual especificada no presente Termo.
+							</li>
+							<li>
+								O "Bubbl" não será responsável perante terceiros pela utilização, tampouco por conteúdo, notícia ou área do Aplicativo criados pelos Usuário. 
+							</li>
+							<li>
+								O "Bubbl" não será responsável e nem oferece qualquer garantia sobre a exatidão, veracidade, ou integridade das informações, conteúdo e notícias apresentadas ou veiculadas no Aplicativo e não assume responsabilidade por (i) quaisquer erros ou omissões (ii) quaisquer falhas no conteúdo ou (iii) dano, (iv) perda, (v) cancelamento, (vi) atraso ou qualquer serviço adquirido ou contratado através do Aplicativo, a título gratuito ou oneroso.
+							</li>
+							<li>
+								O "Bubbl" não subscreve informações prestadas pelos Usuário ou anunciantes, sem o seu expresso consentimento.
+							</li>
+							<li>
+								O "Bubbl" não possui qualquer responsabilidade ou ingerência pelas opiniões expressas nas comunidades a serem criadas, no entanto, se compromete a retirar do ar, assim que cientificada, sobre qualquer manifestação ameaçadora, obscena, difamatória, pejorativa, prejudicial, preconceituosa, racista ou injuriosa, discriminatória em relação à raça, cor, religião, credo, sexualidade, opção sexual ou nacionalidade, empreendendo seus maiores esforços para coibir que se repitam.
+							</li>
+							<li>
+								O Aplicativo não se responsabiliza pela execução de serviços ou encontros que se originarem através do serviço que presta e, igualmente não se responsabiliza por fato cometido por terceiros.
+							</li>
+							<li>
+								O "Bubbl" tomará todas as medidas possíveis para manter a confidencialidade e a segurança descritas nesta cláusula, porém não responderá por prejuízo que possa ser derivado da violação dessas medidas por parte de terceiros que utilizem as redes públicas ou a internet, subvertendo os sistemas de segurança para acessar as informações de Usuários.
+							</li>
+							<li>
+								Tendo em vista, ainda, a impossibilidade de funcionamento integral e ininterrupto de qualquer sistema de telecomunicação ou de informática, durante 365 dias por ano, 24 horas por dia, nesta situação de fragilidade também se incluindo, em razão de sua complexidade, a disponibilização dos serviços objeto do presente Termo, inclusive em razão da dependência de serviços de telecomunicações prestados por terceiros, o "Bubbl" não garante, de nenhuma forma, a prestação do serviço de forma ininterrupta e/ou isenta de erros.
+							</li>
+						</ol>
+
+						<h4>
+							CLÁUSULA SEXTA: DO PRAZO E DA RESCISÃO
+						</h4>
+
+						<ol>
+							<li>
+								O presente TERMO entrará em vigor a partir da aceitação eletrônica dada pelo USUÁRIO, permanecendo vigente pelo prazo de 1 (um) ano, sendo automática e sucessivamente renovado indeterminado, podendo ser rescindido ou reformulado pela equipe responsável pelo "Bubbl", o qual deverá cientificar seus usuários dessas mudanças.
+							</li>
+							<li>
+								Caso o Usuário exerça a faculdade de apagar o seu cadastro, todo o conteúdo, inclusive aquele criado nas comunidades, poderá ser removido, e caso isto ocorra, não poderá, de forma alguma, ser recuperado.
+							</li>
+							<li>
+								Será considerado motivo justo para a rescisão imediata e unilateral deste TERMO por parte do "Bubbl" a constatação da violação de qualquer das disposições contempladas no presente Instrumento, ou ainda, se o Usuário infringir o ordenamento jurídico vigente.
+							</li>
+							<li>
+								O "Bubbl" terá o direito de excluir totalmente o cadastro do Usuário e suas manifestações ou expressões, inclusive, liberando o nome escolhido, caso este incorra em alguma das infrações descritas neste TERMO, não tendo o Usuário o direito de pleitear a recolocação, tampouco de pleitear qualquer direito ou indenização, judicial ou não.
+							</li>
+							<li>
+								O "Bubbl" não divulgará especificamente nenhum dado do Usuário a terceiros (a não ser que este documento seja alterado nesse sentido e, nesse caso, o usuário será avisado das mudanças e poderá ou não aceitar os novos termos)
+							</li>
+						</ol>
+
+						<h4>
+							CLÁUSULA OITAVA: DAS DISPOSIÇÕES GERAIS
+						</h4>
+
+						<ol>
+							<li>
+								O uso comercial da expressão "Bubbl" como marca, nome empresarial ou nome de domínio, bem como os conteúdos das telas relativas aos serviços do "Bubbl" assim como os programas, bancos de dados, redes e arquivos, que permitem que o Usuário acesse e use sua conta, são propriedade do "Bubbl" e estão protegidos pelas leis e tratados internacionais de direito autoral, marcas, patentes, modelos e desenhos industriais. O uso indevido e a reprodução total ou parcial dos referidos conteúdos são proibidos, salvo a autorização expressa do "Bubbl".
+							</li>
+							<li>
+								O Usuário declara e garante, para os fins de direito possuir capacidade jurídica para celebrar este TERMO e utilizar os produtos e serviços objeto deste instrumento, reconhecendo que o presente documento vincula as partes, mediante a criação de uma conta no Aplicativo "Bubbl". Declara ainda que leu e está de pleno acordo com todos os termos deste documento.
+							</li>
+							<li>
+								O "Bubbl" poderá, a qualquer tempo, e a seu exclusivo critério, ceder ou transferir, total ou parcialmente, os direitos e obrigações decorrentes do presente TERMO.
+							</li>
+							<li>
+								Este TERMO é regido pelas leis da República Federativa do Brasil e as partes elegem, para dirimir quaisquer controvérsias dele decorrentes, o Foro da Comarca da Capital do Estado do Rio de Janeiro, em detrimento de qualquer outro, por mais privilegiado que possa ser.
+							</li>
+						</ol>
+
+
+					</div>
+
+					<!--
+					=================================
+					FOOTER SECTION
+					=================================
+					-->
+					<footer class="footer-section section">
+						<!-- COPYRIGHT -->
+						<div class="copyright">Copyright © Bubbl, All rights reserved</div>
+					</footer>
+
+				</div>
+			</section>
+			
+
+		</div>
+
+		<!--
+		=================================
+		JAVASCRIPTS
+		=================================
+		-->
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/retina.min.js"></script>
+		<script src="js/smoothscroll.min.js"></script>
+		<script src="js/wow.min.js"></script>
+		<!--<script src="js/script.js"></script>-->
+
+		<!-- SLICK -->
+		<link id="color-css" rel="stylesheet" href="css/slick.css" />
+		<script src="js/slick.js"></script>
+
+        <!-- GOOGLE ANALYTICS -->
+        <script>
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-56242267-1']);
+      	_gaq.push(['_trackPageview']);
+
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-56475936-1', 'auto');
+		  ga('require', 'displayfeatures');
+		  ga('send', 'pageview');
+
+
+
+        </script>
+
+    </body>
+</html>

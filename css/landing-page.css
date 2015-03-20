@@ -56,6 +56,9 @@
 	margin: 0;
 }
 
+.hero-title {
+	margin-bottom: 24px;
+}
 
 .hero-text {
 	padding-top: 30px;
@@ -63,6 +66,8 @@
 
 .hero-description {
 	color: white;
+	font-size: 20px;
+
 }
 	
 	
